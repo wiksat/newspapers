@@ -1,0 +1,11 @@
+<div class="gazetka">
+    <button mat-button [routerLink]="['']">Cofnij</button>
+    <br>
+    <button mat-button [routerLink]="['/czasopismo', nazwa, 'all']">wszystkie</button>
+    <button mat-button (click)="ten.innerHTML='hohoho'">{{guzik}}</button>
+    <span #ten></span>
+    <br>
+    <button mat-button *ngFor="let item of lata" [routerLink]="[item.routerLink]">
+        {{ item.year }}
+    </button>
+</div>

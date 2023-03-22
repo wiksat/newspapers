@@ -1,0 +1,5 @@
+<div class="main">
+    <div class="gazetka" *ngFor="let item of list" [routerLink]="['/czasopismo', item.name]">
+        <img src="{{item.src}}" alt="{{item.name}}" />
+    </div>
+</div>

@@ -1,0 +1,53 @@
+<div class="gazetka">
+    <button mat-button [routerLink]="['']">Cofnij</button>
+    <br>
+    <button mat-button [routerLink]="['/czasopismo', nazwa, 'all']">wszystkie</button>
+    <br>
+    <button mat-button *ngFor="let item of lata" [routerLink]="[item.routerLink]">
+        {{ item.year }}
+    </button>
+</div>
+<div class="gazetka">
+    <table border=3 class="gazetka">
+        <tr>
+            <th>Strona główna</th>
+            <th>Plik</th>
+            <th>Pismo</th>
+            <th>Darczyncy</th>
+        </tr>
+        <tr *ngFor="let item of czasopisma">
+            <td>
+                <ng-container *ngIf="item.miniaturka; else thumbnailElse">
+                    <img src="{{ item.src }}" alt="{{ item.miniaturka }}" />
+                </ng-container>
+                <ng-template #thumbnailElse>brak</ng-template>
+            </td>
+            <ng-container *ngIf="item['@attributes'].brak; else brakElse">
+                <td></td>
+                <td>
+                    {{ item["@attributes"].brak }}
+                </td>
+                <td></td>
+            </ng-container>
+            <ng-template #brakElse>
+                <td>
+                    <p> format: <b>{{ item.format }}</b></p>
+                    <p> stron: <b>{{ item.stron }}</b></p>
+                    <p> plik:</p>
+                    <a href="{{ item.fileSrc }}">tutaj</a>
+                </td>
+                <td>
+                    <p>Nazwa: <b>{{ item.nazwa }}</b></p>
+                    <p>Numer: <b>{{ item.numer }}</b></p>
+                    <p>Wydawca: <b>{{ item.wydawca }}</b></p>
+
+                </td>
+                <td>
+                    <p>skan:<b>{{ item.skan }}</b></p>
+                    <p>przetworzenie: <b>{{ item.przetworzenie }}</b></p>
+                    <p>podesłał: <b>{{ item.podeslal }}</b></p>
+                </td>
+            </ng-template>
+        </tr>
+    </table>
+</div>

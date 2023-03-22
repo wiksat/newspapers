@@ -1,0 +1,13 @@
+.gazetka{
+    text-align: center;
+    margin: 10px;
+    float: left;
+}
+.main{
+    width: 500px;
+    margin: 0 auto;
+    text-align: center;
+}
+.gazetka:nth-child(2n+1){
+clear: both;
+} 
